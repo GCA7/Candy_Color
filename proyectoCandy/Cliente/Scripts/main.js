@@ -1,5 +1,6 @@
 ﻿     var apiURL = "http://localhost:7659/api/";
-$(document).ready(function () {
+     $(document).ready(function () {
+         debugger;
     var revisar = false;
     var contToques = 0;
     var movimiento1 = -1;
