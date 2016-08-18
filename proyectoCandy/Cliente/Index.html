@@ -10,9 +10,11 @@
     <link href="Content/site.css" rel="stylesheet">
     <link href="Content/animate.css" rel="stylesheet">
 
-   <style>
+    <style>
         body {
             background-color: #313738;
+            background-image: url('Content/img/Wiki.jpg');
+            background-attachment: fixed;
         }
 
         #ele {
@@ -23,6 +25,27 @@
         table {
             margin: 0 auto;
         }
+
+        .rojo {
+            background-color: red;
+        }
+
+        .azul {
+            background-color: blue;
+        }
+
+        .amarillo {
+            background-color: yellow;
+        }
+
+        .naranja {
+            background-color: orange;
+        }
+
+        .verde {
+            background-color: green;
+        }
+
         td {
             width: 20px;
             height: 40px;
@@ -31,41 +54,49 @@
             font-size: 8px;
             border: solid 1px #313738;
             background-color: #07889B;
-            border-radius: 4px;
-        
+            border-radius: 0px;
         }
 
-        td:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
+            td:hover {
+                background-color: rgba(255, 255, 255, 0.8);
+            }
 
         #tableCandy {
             margin-top: 0%;
         }
-       
+
+        .puntos {
+            float: right;
+            width: 100%;
+            color: white;
+            background-color: #07889B;
+            margin-top: 20%;
+            text-align: center;
+            height: 40%;
+        }
     </style>
 
 
 </head>
 <body>
    
-    <div class="container body-content">
+    <div class="container body-content col-md-3">
 
-        <div id="movrestantes">
+        <div id="movrestantes" class="puntos">
 
         </div>
         <footer>
             <p></p>
         </footer>
     </div>
-    <div class="container body-content">
+    <div class="container body-content col-md-3">
        
        
         <footer>
             <p></p>
         </footer>
     </div>
-    <div class="container body-content">
+    <div class="container body-content col-md-9">
 
         <div id="container">
 
