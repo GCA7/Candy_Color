@@ -38,7 +38,7 @@ namespace CandyApi.Controllers
            oPartida = new Partida();
             oPartida.id = 1;
             oPartida.elementos = listElementos;
-            oPartida.movimientosrestantes = 50;
+            oPartida.movimientosrestantes = 1;
             return Json(oPartida);
         }
         [EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -79,7 +79,7 @@ namespace CandyApi.Controllers
             [FromBody] Usuario usuario)
         {
             //Logica de negocios
-            Thread.Sleep(100);
+            Thread.Sleep(250);
                cambio=RealizarMovHorizontal(mover);
                cambio2=RealizarMovVertical(mover);
             oPartida.elementos = listElementos.OrderBy(x => x.id).ToList();

@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using APICandy.Models;
+using System.Web.Http.Cors;
 
 namespace APICandy.Controllers
 {
@@ -17,9 +18,10 @@ namespace APICandy.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/estadisticas
-        public IQueryable<estadisticas> Getestadisticas()
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IEnumerable<estadisticas> Getestadisticas()
         {
-            return db.estadisticas;
+            return db.estadisticas.OrderByDescending(x => x.puntaje).ToList();
         }
 
         // GET: api/estadisticas/5
@@ -71,6 +73,7 @@ namespace APICandy.Controllers
         }
 
         // POST: api/estadisticas
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(estadisticas))]
         public IHttpActionResult Postestadisticas(estadisticas estadisticas)
         {
@@ -78,13 +81,11 @@ namespace APICandy.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             db.estadisticas.Add(estadisticas);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = estadisticas.id_estadistíca }, estadisticas);
         }
-
         // DELETE: api/estadisticas/5
         [ResponseType(typeof(estadisticas))]
         public IHttpActionResult Deleteestadisticas(decimal id)
@@ -114,5 +115,6 @@ namespace APICandy.Controllers
         {
             return db.estadisticas.Count(e => e.id_estadistíca == id) > 0;
         }
+       
     }
 }

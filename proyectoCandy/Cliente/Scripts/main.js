@@ -6,6 +6,7 @@
     var movimiento1 = -1;
     var movimiento2 = -1;
     var partida = -1;
+    trarerEstadísticas();
     $.post(apiURL + "partida", { id: '0' })
                 .done(function (data) {
                     partida = data.id;
@@ -77,13 +78,13 @@ function Paint(data) {
     }
     mvrest = '';
     puntos = '';
-    mvrest ="<h1 class='animate zoomIn  azul'>"+data.movimientosrestantes + "'</h1>";
-    puntos = "<h1 class='animate zoomIn  azul' id='puntosf'>" + data.puntos + "'</h1>";
+    mvrest ="<h1 class='animate zoomIn'>"+data.movimientosrestantes + "'</h1>";
+    puntos = "<h1 class='animate zoomIn ' id='puntosf'>" + data.puntos + "</h1>";
          
     table += "</table>";
     $("#container").html(table);
             
-    $("#movrestantes").html(puntos);
+    $("#movrestantes").html(mvrest);
     $("#puntos").html(puntos);
     if (data.movimientosrestantes == 0) {
         debugger;       
@@ -111,7 +112,13 @@ function terminarpartida() {
     if (!document.getElementById('username').value == "") {
         $.post("http://localhost:7659/api/" + "estadisticas", { usuario: document.getElementById('username').value,puntaje:puntos})
                   .done(function (data) {
-                     
+                      location.href("http://localhost:53075");
                   });
     }
-        }
+}
+function trarerEstadísticas() {
+    $.get("http://localhost:7659/api/" + "estadisticas")
+.done(function (data) {
+    alert(data[0].puntaje);
+});
+}

@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -31,5 +32,10 @@ namespace APICandy.Models
         }
 
         public System.Data.Entity.DbSet<APICandy.Models.estadisticas> estadisticas { get; set; }
+
+        internal object Entry(string usuario, int puntaje)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

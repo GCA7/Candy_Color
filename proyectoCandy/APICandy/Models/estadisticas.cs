@@ -16,6 +16,6 @@ namespace APICandy.Models
         [StringLength(250)]
         public string usuario { get; set; }
 
-        public string puntaje { get; set; }
+        public int puntaje { get; set; }
     }
 }
