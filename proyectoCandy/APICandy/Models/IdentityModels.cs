@@ -32,10 +32,13 @@ namespace APICandy.Models
         }
 
         public System.Data.Entity.DbSet<APICandy.Models.estadisticas> estadisticas { get; set; }
+        public System.Data.Entity.DbSet<APICandy.Models.usuarios> usuarios { get; set; }
 
         internal object Entry(string usuario, int puntaje)
         {
             throw new NotImplementedException();
         }
+
+        public System.Data.Entity.DbSet<CandyApi.Entity.Usuario> Usuarios { get; set; }
     }
 }

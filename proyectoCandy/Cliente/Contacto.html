@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet">
+    <link href="Content/site.css" rel="stylesheet">
+    <link href="Content/animate.css" rel="stylesheet">
+
+    <style>
+        .tam {
+            width: 100%;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h3>Contacto</h3>
+            <hr />
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Asunto</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Asunto">
+                </div>
+                <div class="form-group">
+                    <textarea class="tam" type="file" id="exampleInputFile"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-default" onclick="enviarCorreo();  ">Enviar</button>
+            </form>
+        </center>
+    </div>
+
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+    <script src="Scripts/main.js"></script>
+</body>
+</html>

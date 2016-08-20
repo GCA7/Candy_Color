@@ -38,7 +38,7 @@ namespace CandyApi.Controllers
            oPartida = new Partida();
             oPartida.id = 1;
             oPartida.elementos = listElementos;
-            oPartida.movimientosrestantes = 1;
+            oPartida.movimientosrestantes = 50;
             return Json(oPartida);
         }
         [EnableCors(origins: "*", headers: "*", methods: "*")]

@@ -66,10 +66,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contacto.html" />
     <Content Include="Content\img\amarillo.png" />
     <Content Include="Content\img\azul.png" />
     <Content Include="Content\img\candy.jpg" />
+    <Content Include="Content\img\candy_color.jpg" />
     <Content Include="Content\img\naranja.png" />
+    <Content Include="Content\img\principal.jpg" />
     <Content Include="Content\img\rojo.png" />
     <Content Include="Content\img\verde.png" />
     <Content Include="Login.html" />
@@ -83,6 +86,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Index.html" />
+    <Content Include="Principal.html" />
+    <Content Include="Registro.html" />
     <Content Include="Scripts\main.js" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -1,20 +1,24 @@
-﻿     var apiURL = "http://localhost:7659/api/";
-     $(document).ready(function () {
-         debugger;
-    var revisar = false;
-    var contToques = 0;
-    var movimiento1 = -1;
-    var movimiento2 = -1;
-    var partida = -1;
-    trarerEstadísticas();
-    $.post(apiURL + "partida", { id: '0' })
-                .done(function (data) {
-                    partida = data.id;
-                    Paint(data);
-                    listo(0);
-                });
-           
-    $("body").on("click", "td", function () {
+﻿var apiURL = "http://localhost:7659/api/";
+var revisar = false;
+var contToques = 0;
+var movimiento1 = -1;
+var movimiento2 = -1;
+var partida = -1;
+     function iniciarjuego() {
+         var revisar = false;
+         var contToques = 0;
+         var movimiento1 = -1;
+         var movimiento2 = -1;
+         var partida = -1;
+         $.post(apiURL + "partida", { id: '0' })
+                     .done(function (data) {
+                         partida = data.id;
+                         Paint(data);
+                         listo(0);
+                     });
+     }  
+     $("body").on("click", "td", function () {
+      
         if (movimiento1 == $(this).attr("numero") || movimiento2 == $(this).attr("numero")) {
             return;
         }
@@ -46,7 +50,6 @@
               
     });
 
-});
 
 function Paint(data) {
     $("#container").html("");
@@ -112,13 +115,50 @@ function terminarpartida() {
     if (!document.getElementById('username').value == "") {
         $.post("http://localhost:7659/api/" + "estadisticas", { usuario: document.getElementById('username').value,puntaje:puntos})
                   .done(function (data) {
-                      location.href("http://localhost:53075");
+                      location.reload("http://localhost:53075");
                   });
     }
 }
-function trarerEstadísticas() {
+function trarerEstadísticas() { 
     $.get("http://localhost:7659/api/" + "estadisticas")
 .done(function (data) {
-    alert(data[0].puntaje);
+    mostrarTabla(data);    
 });
+}
+function mostrarTabla(data) {
+    debugger;
+    var table = '';
+    table += "<table class='table table-striped'>";
+    table += "<thead><th>Usuario</th><th>Puntaje</th></thead>";
+    table += "<tbody>";
+    for (var i = 0; i < data.length; i++) {
+        table += "<td >" + data[i].usuario + "</td>";
+        table += "<td >" + data[i].puntaje + "</td>";
+        table += "</tr>";
+    }
+    table += "</tbody>";
+    table += "</table>";
+    $("#estadisticas").html(table);
+
+}
+function registro() {
+    debugger;
+    $.post("http://localhost:7659/api/" + "usuarios", {username: document.getElementById('exampleInputEmail3').value, password: document.getElementById('exampleInputPassword3').value })
+.done(function (data) {
+    alert('siii');
+});
+}
+function login() {
+    $.get("http://localhost:7659/api/" + "usuarios", { username: document.getElementById('exampleInputEmail3').value, password: document.getElementById('exampleInputPassword3').value })
+.done(function (data) {
+    location.reload("http://localhost:53075");
+});
+}
+function enviarCorreo() {
+    debugger;
+    $.put("http://localhost:7659/api/" + "mail", { correo:document.getElementById('exampleInputEmail1').value, asunto:document.getElementById('exampleInputPassword1').value, contenido:document.getElementById('exampleInputFile').value})
+.done(function (data) {
+    location.reload("http://localhost:53075/Principal.html");
+});
+
 }
